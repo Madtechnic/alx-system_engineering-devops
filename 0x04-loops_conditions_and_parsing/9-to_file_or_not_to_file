@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # displays information about the School file
-
-file="school.txt"
+file="school"
 
 # Check if the file exists
 if [ -e "$file" ]; then
