@@ -1,19 +1,7 @@
 #!/usr/bin/env bash
-file="/etc/passwd"
+# Displays the contents of the file `/etc/passwd`.
+#   Only displays the username, user id, and user home directory path.
 
-# Check if the file exists
-if [ -e "$file" ]; then
-    # Use IFS to set ':' as the field separator
-    IFS=":"
-    # Read each line of the file
-    while read -r username _ uid _ _ home _
-    do
-        echo "Username: $username"
-        echo "User ID: $uid"
-        echo "Home directory: $home"
-    done < "$file"
-    # Reset IFS
-    unset IFS
-else
-    echo "File $file does not exist"
-fi
+while read -r passwd; do
+  echo "$passwd" | cut -d ':' -f1,3,6
+done < "/etc/passwd"
